@@ -1,0 +1,129 @@
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+    color: #111827;
+  }
+  
+  .panel {
+    position: relative; /*changes*/
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+  }
+
+  .content {
+    text-align: center;
+  }
+  
+  .content h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  
+  .content p {
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  /* Minimal alternating backgrounds */
+  .panel--1 { background: #f9fafb; }
+  .panel--2 { background: #e5e7eb; }
+
+  
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  
+  
+  /* Horizontal scroller inside first section */
+  .hscroller {
+    position:absolute; /*changes*/
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+    background-color: rgb(var(--r, 255), var(--g, 255), var(--b, 255));
+
+    /*background-color: rgb(var(--shade, 255), var(--shade, 255), var(--shade, 255));*/
+  }
+
+  .hscroller::-webkit-scrollbar { /* hide my scroller lol */
+    display: none; /* Chrome, Safari, Edge */
+  }
+  
+  .slide {
+    position: relative;
+    scroll-snap-align: unset;
+    /* display: grid;
+    place-items: center;
+    text-align: center; */
+    padding: 2rem;
+    color: rgb(var(--text-shade, 0), var(--text-shade, 0), var(--text-shade, 0));
+    background: transparent;
+  }
+  
+  .slide h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0 0 0.5rem; }
+  .slide p { margin: 0; opacity: 0.8; }
+
+  .title {
+    font-size: 800% !important;
+    position: relative;
+    top: 9px;
+    left: 20px;
+
+  }
+  .name {
+    font-size: 100% !important;
+    position : relative;
+    top: 15px;
+    left: 27px;
+  }
+
+  .sticky-note-1 {
+    width: 100px;         /* match rectangle width */
+    height: 75px;  
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    cursor: pointer;/*  signals to users that the element is clickable, like a button or link */
+    display: flex; /*turns the element into a flex container, enabling flexbox layout for its children.*/
+    flex-direction: column; 
+
+  }
+
+  .sticky-note-shape-tri {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 50px solid #3498db;
+  }
+  
+  .sticky-note-shape-rec {
+    width: 100px;
+    height: 50px;
+    background-color: #3498db;
+  }
+
+  
+
+  /* Slide-specific backgrounds removed to allow container fade */
+  
+  
